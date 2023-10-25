@@ -1,0 +1,3758 @@
+{
+  "contractName": "ISwapData",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "listingId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "tokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "tokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionChargeBips",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCompleted",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCancelled",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionCharge",
+              "type": "uint256"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct ISwapData.SwapListing",
+          "name": "listing",
+          "type": "tuple"
+        }
+      ],
+      "name": "SwapListingAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "listingId",
+          "type": "uint256"
+        }
+      ],
+      "name": "SwapListingRemoved",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "listingId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "tokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "tokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionChargeBips",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCompleted",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCancelled",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionCharge",
+              "type": "uint256"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct ISwapData.SwapListing",
+          "name": "listing",
+          "type": "tuple"
+        }
+      ],
+      "name": "SwapListingUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "offerId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "listingId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "offerTokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "offerTokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "offerTokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "listingTokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "listingTokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "listingTokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionChargeBips",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCompleted",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCancelled",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isDeclined",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionCharge",
+              "type": "uint256"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct ISwapData.SwapOffer",
+          "name": "offer",
+          "type": "tuple"
+        }
+      ],
+      "name": "SwapOfferAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "SwapOfferRemoved",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "offerId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "listingId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "offerTokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "offerTokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "offerTokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "listingTokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "listingTokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "listingTokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionChargeBips",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCompleted",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCancelled",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isDeclined",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionCharge",
+              "type": "uint256"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct ISwapData.SwapOffer",
+          "name": "offer",
+          "type": "tuple"
+        }
+      ],
+      "name": "SwapOfferUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "tradeId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "listingId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "offerId",
+              "type": "uint256"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct ISwapData.Trade",
+          "name": "trade",
+          "type": "tuple"
+        }
+      ],
+      "name": "TradeAdded",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "listingId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "tokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "tokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionChargeBips",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCompleted",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCancelled",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionCharge",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ISwapData.SwapListing",
+          "name": "listing",
+          "type": "tuple"
+        }
+      ],
+      "name": "addListing",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "removeListingById",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "listingId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "tokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "tokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionChargeBips",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCompleted",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCancelled",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionCharge",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ISwapData.SwapListing",
+          "name": "listing",
+          "type": "tuple"
+        }
+      ],
+      "name": "updateListing",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "readListingById",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "listingId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "tokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "tokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionChargeBips",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCompleted",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCancelled",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionCharge",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ISwapData.SwapListing",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "offerId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "listingId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "offerTokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "offerTokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "offerTokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "listingTokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "listingTokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "listingTokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionChargeBips",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCompleted",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCancelled",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isDeclined",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionCharge",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ISwapData.SwapOffer",
+          "name": "offer",
+          "type": "tuple"
+        }
+      ],
+      "name": "addOffer",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "removeOfferById",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "offerId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "listingId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "offerTokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "offerTokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "offerTokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "listingTokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "listingTokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "listingTokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionChargeBips",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCompleted",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCancelled",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isDeclined",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionCharge",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ISwapData.SwapOffer",
+          "name": "offer",
+          "type": "tuple"
+        }
+      ],
+      "name": "updateOffer",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "readOfferById",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "offerId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "listingId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "offerTokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "offerTokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "offerTokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "listingTokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "listingTokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "listingTokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionChargeBips",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCompleted",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCancelled",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isDeclined",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionCharge",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ISwapData.SwapOffer",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "tradeId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "listingId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "offerId",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ISwapData.Trade",
+          "name": "trade",
+          "type": "tuple"
+        }
+      ],
+      "name": "addTrade",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "readTradeById",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "tradeId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "listingId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "offerId",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ISwapData.Trade",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "readAllListings",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "listingId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "tokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "tokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionChargeBips",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCompleted",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCancelled",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionCharge",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ISwapData.SwapListing[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "readAllOffers",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "offerId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "listingId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "offerTokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "offerTokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "offerTokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "listingTokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "listingTokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "listingTokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionChargeBips",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCompleted",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCancelled",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isDeclined",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionCharge",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ISwapData.SwapOffer[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "readAllTrades",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "tradeId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "listingId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "offerId",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ISwapData.Trade[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "start",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "end",
+          "type": "uint256"
+        }
+      ],
+      "name": "readListingsByIndex",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "listingId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "tokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "tokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionChargeBips",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCompleted",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCancelled",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionCharge",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ISwapData.SwapListing[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "start",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "end",
+          "type": "uint256"
+        }
+      ],
+      "name": "readOffersByIndex",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "offerId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "listingId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "offerTokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "offerTokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "offerTokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "contract IERC721Upgradeable",
+              "name": "listingTokenAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "listingTokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "listingTokenOwner",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionChargeBips",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCompleted",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isCancelled",
+              "type": "bool"
+            },
+            {
+              "internalType": "bool",
+              "name": "isDeclined",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "transactionCharge",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ISwapData.SwapOffer[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "start",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "end",
+          "type": "uint256"
+        }
+      ],
+      "name": "readTradesByIndex",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "tradeId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "listingId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "offerId",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ISwapData.Trade[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"tokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"tokenOwner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"transactionChargeBips\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isCompleted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isCancelled\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"transactionCharge\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"struct ISwapData.SwapListing\",\"name\":\"listing\",\"type\":\"tuple\"}],\"name\":\"SwapListingAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"}],\"name\":\"SwapListingRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"tokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"tokenOwner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"transactionChargeBips\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isCompleted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isCancelled\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"transactionCharge\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"struct ISwapData.SwapListing\",\"name\":\"listing\",\"type\":\"tuple\"}],\"name\":\"SwapListingUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"offerId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"offerTokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"offerTokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"offerTokenOwner\",\"type\":\"address\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"listingTokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"listingTokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"listingTokenOwner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"transactionChargeBips\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isCompleted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isCancelled\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isDeclined\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"transactionCharge\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"struct ISwapData.SwapOffer\",\"name\":\"offer\",\"type\":\"tuple\"}],\"name\":\"SwapOfferAdded\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"SwapOfferRemoved\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"offerId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"offerTokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"offerTokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"offerTokenOwner\",\"type\":\"address\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"listingTokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"listingTokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"listingTokenOwner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"transactionChargeBips\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isCompleted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isCancelled\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isDeclined\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"transactionCharge\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"struct ISwapData.SwapOffer\",\"name\":\"offer\",\"type\":\"tuple\"}],\"name\":\"SwapOfferUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"tradeId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"offerId\",\"type\":\"uint256\"}],\"indexed\":false,\"internalType\":\"struct ISwapData.Trade\",\"name\":\"trade\",\"type\":\"tuple\"}],\"name\":\"TradeAdded\",\"type\":\"event\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"tokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"tokenOwner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"transactionChargeBips\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isCompleted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isCancelled\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"transactionCharge\",\"type\":\"uint256\"}],\"internalType\":\"struct ISwapData.SwapListing\",\"name\":\"listing\",\"type\":\"tuple\"}],\"name\":\"addListing\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"offerId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"offerTokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"offerTokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"offerTokenOwner\",\"type\":\"address\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"listingTokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"listingTokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"listingTokenOwner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"transactionChargeBips\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isCompleted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isCancelled\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isDeclined\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"transactionCharge\",\"type\":\"uint256\"}],\"internalType\":\"struct ISwapData.SwapOffer\",\"name\":\"offer\",\"type\":\"tuple\"}],\"name\":\"addOffer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"tradeId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"offerId\",\"type\":\"uint256\"}],\"internalType\":\"struct ISwapData.Trade\",\"name\":\"trade\",\"type\":\"tuple\"}],\"name\":\"addTrade\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"readAllListings\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"tokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"tokenOwner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"transactionChargeBips\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isCompleted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isCancelled\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"transactionCharge\",\"type\":\"uint256\"}],\"internalType\":\"struct ISwapData.SwapListing[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"readAllOffers\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"offerId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"offerTokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"offerTokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"offerTokenOwner\",\"type\":\"address\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"listingTokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"listingTokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"listingTokenOwner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"transactionChargeBips\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isCompleted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isCancelled\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isDeclined\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"transactionCharge\",\"type\":\"uint256\"}],\"internalType\":\"struct ISwapData.SwapOffer[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"readAllTrades\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"tradeId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"offerId\",\"type\":\"uint256\"}],\"internalType\":\"struct ISwapData.Trade[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"readListingById\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"tokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"tokenOwner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"transactionChargeBips\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isCompleted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isCancelled\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"transactionCharge\",\"type\":\"uint256\"}],\"internalType\":\"struct ISwapData.SwapListing\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"start\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"end\",\"type\":\"uint256\"}],\"name\":\"readListingsByIndex\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"tokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"tokenOwner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"transactionChargeBips\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isCompleted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isCancelled\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"transactionCharge\",\"type\":\"uint256\"}],\"internalType\":\"struct ISwapData.SwapListing[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"readOfferById\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"offerId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"offerTokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"offerTokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"offerTokenOwner\",\"type\":\"address\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"listingTokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"listingTokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"listingTokenOwner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"transactionChargeBips\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isCompleted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isCancelled\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isDeclined\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"transactionCharge\",\"type\":\"uint256\"}],\"internalType\":\"struct ISwapData.SwapOffer\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"start\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"end\",\"type\":\"uint256\"}],\"name\":\"readOffersByIndex\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"offerId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"offerTokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"offerTokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"offerTokenOwner\",\"type\":\"address\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"listingTokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"listingTokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"listingTokenOwner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"transactionChargeBips\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isCompleted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isCancelled\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isDeclined\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"transactionCharge\",\"type\":\"uint256\"}],\"internalType\":\"struct ISwapData.SwapOffer[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"readTradeById\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"tradeId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"offerId\",\"type\":\"uint256\"}],\"internalType\":\"struct ISwapData.Trade\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"start\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"end\",\"type\":\"uint256\"}],\"name\":\"readTradesByIndex\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"tradeId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"offerId\",\"type\":\"uint256\"}],\"internalType\":\"struct ISwapData.Trade[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"removeListingById\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"}],\"name\":\"removeOfferById\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"tokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"tokenOwner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"transactionChargeBips\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isCompleted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isCancelled\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"transactionCharge\",\"type\":\"uint256\"}],\"internalType\":\"struct ISwapData.SwapListing\",\"name\":\"listing\",\"type\":\"tuple\"}],\"name\":\"updateListing\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"offerId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"listingId\",\"type\":\"uint256\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"offerTokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"offerTokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"offerTokenOwner\",\"type\":\"address\"},{\"internalType\":\"contract IERC721Upgradeable\",\"name\":\"listingTokenAddress\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"listingTokenId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"listingTokenOwner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"transactionChargeBips\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"isCompleted\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isCancelled\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isDeclined\",\"type\":\"bool\"},{\"internalType\":\"uint256\",\"name\":\"transactionCharge\",\"type\":\"uint256\"}],\"internalType\":\"struct ISwapData.SwapOffer\",\"name\":\"offer\",\"type\":\"tuple\"}],\"name\":\"updateOffer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/ISwapData.sol\":\"ISwapData\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts-upgradeable/token/ERC721/IERC721Upgradeable.sol\":{\"keccak256\":\"0xbe63437e37e32162d5d11ea8f11a44378c092b4bcbb05b51a813fe4bf33297d4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://68a514febde6ffd8afe3cb5b40815d10c0a926063237d5d167cbaa90239f75ae\",\"dweb:/ipfs/QmVBvYeR6oGBw7K7vu5FMotr8josejtaGwugM68VTZacww\"]},\"@openzeppelin/contracts-upgradeable/utils/introspection/IERC165Upgradeable.sol\":{\"keccak256\":\"0xc6cef87559d0aeffdf0a99803de655938a7779ec0a3cd5d4383483ad85565a09\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://92ad7e572cf44e6b4b37631b44b62f9eb9fb1cf14d9ce51c1504d5dc7ccaf758\",\"dweb:/ipfs/QmcnbqX85tsWnUXPmtuPLE4SczME2sJaTfmqEFkuAJvWhy\"]},\"project:/contracts/interfaces/ISwapData.sol\":{\"keccak256\":\"0x2fd7acde47d4abe6070f6158c9a4af3e0c8aaeaf554dee20a8a4c7e49380106f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://f58c6533d29c6c0d39d9d107db1735fc4a8b43788a608b7c133b9f8081db2b84\",\"dweb:/ipfs/QmP5ShnRswiUKUU3tmQW6mAxMrYBLdp25W12VCJ2T5aeyN\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "//SPDX-License-Identifier: MIT\npragma solidity 0.8.17;\n\nimport \"@openzeppelin/contracts-upgradeable/token/ERC721/IERC721Upgradeable.sol\";\n\ninterface ISwapData {\n    struct SwapListing {\n        uint256 listingId;\n        IERC721Upgradeable tokenAddress;\n        uint256 tokenId;\n        address tokenOwner;\n        uint256 transactionChargeBips;\n        bool isCompleted;\n        bool isCancelled;\n        uint256 transactionCharge;\n    }\n\n    struct SwapOffer {\n        uint256 offerId;\n        uint256 listingId;\n        IERC721Upgradeable offerTokenAddress;\n        uint256 offerTokenId;\n        address offerTokenOwner;\n        IERC721Upgradeable listingTokenAddress;\n        uint256 listingTokenId;\n        address listingTokenOwner;\n        uint256 transactionChargeBips;\n        bool isCompleted;\n        bool isCancelled;\n        bool isDeclined;\n        uint256 transactionCharge;\n    }\n\n    struct Trade {\n        uint256 tradeId;\n        uint256 listingId;\n        uint256 offerId;\n    }\n\n    event SwapListingAdded(SwapListing listing);\n    event SwapListingUpdated(SwapListing listing);\n    event SwapListingRemoved(uint256 listingId);\n    event SwapOfferAdded(SwapOffer offer);\n    event SwapOfferUpdated(SwapOffer offer);\n    event SwapOfferRemoved(uint256 id);\n    event TradeAdded(Trade trade);\n\n    function addListing(SwapListing memory listing) external returns (bool);\n\n    function removeListingById(uint256 id) external;\n\n    function updateListing(SwapListing memory listing) external;\n\n    function readListingById(uint256 id)\n        external\n        view\n        returns (SwapListing memory);\n\n    function addOffer(SwapOffer memory offer) external returns (bool);\n\n    function removeOfferById(uint256 id) external;\n\n    function updateOffer(SwapOffer memory offer) external;\n\n    function readOfferById(uint256 id) external view returns (SwapOffer memory);\n\n    function addTrade(Trade memory trade) external;\n\n    function readTradeById(uint256 id) external view returns (Trade memory);\n\n    function readAllListings() external view returns (SwapListing[] memory);\n\n    function readAllOffers() external view returns (SwapOffer[] memory);\n\n    function readAllTrades() external view returns (Trade[] memory);\n    function readListingsByIndex(\n        uint256 start,\n        uint256 end\n    ) external view returns (SwapListing[] memory);\n\n    function readOffersByIndex(\n        uint256 start,\n        uint256 end\n    ) external view returns (SwapOffer[] memory);\n    function readTradesByIndex(\n        uint256 start,\n        uint256 end\n    ) external view returns (Trade[] memory);\n}\n",
+  "sourcePath": "/Users/shivam/github/contracts-upgradable/contracts/interfaces/ISwapData.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/ISwapData.sol",
+    "exportedSymbols": {
+      "IERC165Upgradeable": [
+        1782
+      ],
+      "IERC721Upgradeable": [
+        1024
+      ],
+      "ISwapData": [
+        7972
+      ]
+    },
+    "id": 7973,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7761,
+        "literals": [
+          "solidity",
+          "0.8",
+          ".17"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "31:23:31"
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts-upgradeable/token/ERC721/IERC721Upgradeable.sol",
+        "file": "@openzeppelin/contracts-upgradeable/token/ERC721/IERC721Upgradeable.sol",
+        "id": 7762,
+        "nameLocation": "-1:-1:-1",
+        "nodeType": "ImportDirective",
+        "scope": 7973,
+        "sourceUnit": 1025,
+        "src": "56:81:31",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ISwapData",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 7972,
+        "linearizedBaseContracts": [
+          7972
+        ],
+        "name": "ISwapData",
+        "nameLocation": "149:9:31",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "ISwapData.SwapListing",
+            "id": 7780,
+            "members": [
+              {
+                "constant": false,
+                "id": 7764,
+                "mutability": "mutable",
+                "name": "listingId",
+                "nameLocation": "202:9:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7780,
+                "src": "194:17:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7763,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "194:7:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7767,
+                "mutability": "mutable",
+                "name": "tokenAddress",
+                "nameLocation": "240:12:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7780,
+                "src": "221:31:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_IERC721Upgradeable_$1024",
+                  "typeString": "contract IERC721Upgradeable"
+                },
+                "typeName": {
+                  "id": 7766,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 7765,
+                    "name": "IERC721Upgradeable",
+                    "nameLocations": [
+                      "221:18:31"
+                    ],
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 1024,
+                    "src": "221:18:31"
+                  },
+                  "referencedDeclaration": 1024,
+                  "src": "221:18:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC721Upgradeable_$1024",
+                    "typeString": "contract IERC721Upgradeable"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7769,
+                "mutability": "mutable",
+                "name": "tokenId",
+                "nameLocation": "270:7:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7780,
+                "src": "262:15:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7768,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "262:7:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7771,
+                "mutability": "mutable",
+                "name": "tokenOwner",
+                "nameLocation": "295:10:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7780,
+                "src": "287:18:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 7770,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "287:7:31",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7773,
+                "mutability": "mutable",
+                "name": "transactionChargeBips",
+                "nameLocation": "323:21:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7780,
+                "src": "315:29:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7772,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "315:7:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7775,
+                "mutability": "mutable",
+                "name": "isCompleted",
+                "nameLocation": "359:11:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7780,
+                "src": "354:16:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 7774,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "354:4:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7777,
+                "mutability": "mutable",
+                "name": "isCancelled",
+                "nameLocation": "385:11:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7780,
+                "src": "380:16:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 7776,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "380:4:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7779,
+                "mutability": "mutable",
+                "name": "transactionCharge",
+                "nameLocation": "414:17:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7780,
+                "src": "406:25:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7778,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "406:7:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "SwapListing",
+            "nameLocation": "172:11:31",
+            "nodeType": "StructDefinition",
+            "scope": 7972,
+            "src": "165:273:31",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "ISwapData.SwapOffer",
+            "id": 7809,
+            "members": [
+              {
+                "constant": false,
+                "id": 7782,
+                "mutability": "mutable",
+                "name": "offerId",
+                "nameLocation": "479:7:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7809,
+                "src": "471:15:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7781,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "471:7:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7784,
+                "mutability": "mutable",
+                "name": "listingId",
+                "nameLocation": "504:9:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7809,
+                "src": "496:17:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7783,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "496:7:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7787,
+                "mutability": "mutable",
+                "name": "offerTokenAddress",
+                "nameLocation": "542:17:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7809,
+                "src": "523:36:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_IERC721Upgradeable_$1024",
+                  "typeString": "contract IERC721Upgradeable"
+                },
+                "typeName": {
+                  "id": 7786,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 7785,
+                    "name": "IERC721Upgradeable",
+                    "nameLocations": [
+                      "523:18:31"
+                    ],
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 1024,
+                    "src": "523:18:31"
+                  },
+                  "referencedDeclaration": 1024,
+                  "src": "523:18:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC721Upgradeable_$1024",
+                    "typeString": "contract IERC721Upgradeable"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7789,
+                "mutability": "mutable",
+                "name": "offerTokenId",
+                "nameLocation": "577:12:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7809,
+                "src": "569:20:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7788,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "569:7:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7791,
+                "mutability": "mutable",
+                "name": "offerTokenOwner",
+                "nameLocation": "607:15:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7809,
+                "src": "599:23:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 7790,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "599:7:31",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7794,
+                "mutability": "mutable",
+                "name": "listingTokenAddress",
+                "nameLocation": "651:19:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7809,
+                "src": "632:38:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_contract$_IERC721Upgradeable_$1024",
+                  "typeString": "contract IERC721Upgradeable"
+                },
+                "typeName": {
+                  "id": 7793,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 7792,
+                    "name": "IERC721Upgradeable",
+                    "nameLocations": [
+                      "632:18:31"
+                    ],
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 1024,
+                    "src": "632:18:31"
+                  },
+                  "referencedDeclaration": 1024,
+                  "src": "632:18:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IERC721Upgradeable_$1024",
+                    "typeString": "contract IERC721Upgradeable"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7796,
+                "mutability": "mutable",
+                "name": "listingTokenId",
+                "nameLocation": "688:14:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7809,
+                "src": "680:22:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7795,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "680:7:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7798,
+                "mutability": "mutable",
+                "name": "listingTokenOwner",
+                "nameLocation": "720:17:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7809,
+                "src": "712:25:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 7797,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "712:7:31",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7800,
+                "mutability": "mutable",
+                "name": "transactionChargeBips",
+                "nameLocation": "755:21:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7809,
+                "src": "747:29:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7799,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "747:7:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7802,
+                "mutability": "mutable",
+                "name": "isCompleted",
+                "nameLocation": "791:11:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7809,
+                "src": "786:16:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 7801,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "786:4:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7804,
+                "mutability": "mutable",
+                "name": "isCancelled",
+                "nameLocation": "817:11:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7809,
+                "src": "812:16:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 7803,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "812:4:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7806,
+                "mutability": "mutable",
+                "name": "isDeclined",
+                "nameLocation": "843:10:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7809,
+                "src": "838:15:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 7805,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "838:4:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7808,
+                "mutability": "mutable",
+                "name": "transactionCharge",
+                "nameLocation": "871:17:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7809,
+                "src": "863:25:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7807,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "863:7:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "SwapOffer",
+            "nameLocation": "451:9:31",
+            "nodeType": "StructDefinition",
+            "scope": 7972,
+            "src": "444:451:31",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "ISwapData.Trade",
+            "id": 7816,
+            "members": [
+              {
+                "constant": false,
+                "id": 7811,
+                "mutability": "mutable",
+                "name": "tradeId",
+                "nameLocation": "932:7:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7816,
+                "src": "924:15:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7810,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "924:7:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7813,
+                "mutability": "mutable",
+                "name": "listingId",
+                "nameLocation": "957:9:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7816,
+                "src": "949:17:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7812,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "949:7:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7815,
+                "mutability": "mutable",
+                "name": "offerId",
+                "nameLocation": "984:7:31",
+                "nodeType": "VariableDeclaration",
+                "scope": 7816,
+                "src": "976:15:31",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7814,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "976:7:31",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Trade",
+            "nameLocation": "908:5:31",
+            "nodeType": "StructDefinition",
+            "scope": 7972,
+            "src": "901:97:31",
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "eventSelector": "418cd676c9793f75ba96025aa3d745018dc4edc4b51d104cea0af0fc7b9b0d26",
+            "id": 7821,
+            "name": "SwapListingAdded",
+            "nameLocation": "1010:16:31",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 7820,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7819,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "listing",
+                  "nameLocation": "1039:7:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7821,
+                  "src": "1027:19:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_SwapListing_$7780_memory_ptr",
+                    "typeString": "struct ISwapData.SwapListing"
+                  },
+                  "typeName": {
+                    "id": 7818,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 7817,
+                      "name": "SwapListing",
+                      "nameLocations": [
+                        "1027:11:31"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7780,
+                      "src": "1027:11:31"
+                    },
+                    "referencedDeclaration": 7780,
+                    "src": "1027:11:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_SwapListing_$7780_storage_ptr",
+                      "typeString": "struct ISwapData.SwapListing"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1026:21:31"
+            },
+            "src": "1004:44:31"
+          },
+          {
+            "anonymous": false,
+            "eventSelector": "fac338531d5b0b2165f434d6b3974a2d388f546fee8aae7ce385671015eeaacb",
+            "id": 7826,
+            "name": "SwapListingUpdated",
+            "nameLocation": "1059:18:31",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 7825,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7824,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "listing",
+                  "nameLocation": "1090:7:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7826,
+                  "src": "1078:19:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_SwapListing_$7780_memory_ptr",
+                    "typeString": "struct ISwapData.SwapListing"
+                  },
+                  "typeName": {
+                    "id": 7823,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 7822,
+                      "name": "SwapListing",
+                      "nameLocations": [
+                        "1078:11:31"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7780,
+                      "src": "1078:11:31"
+                    },
+                    "referencedDeclaration": 7780,
+                    "src": "1078:11:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_SwapListing_$7780_storage_ptr",
+                      "typeString": "struct ISwapData.SwapListing"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1077:21:31"
+            },
+            "src": "1053:46:31"
+          },
+          {
+            "anonymous": false,
+            "eventSelector": "3e93d23e063b84ea7cefd61949968ea1c1f2bfb0b9135599af8044766f7bce88",
+            "id": 7830,
+            "name": "SwapListingRemoved",
+            "nameLocation": "1110:18:31",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 7829,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7828,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "listingId",
+                  "nameLocation": "1137:9:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7830,
+                  "src": "1129:17:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7827,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1129:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1128:19:31"
+            },
+            "src": "1104:44:31"
+          },
+          {
+            "anonymous": false,
+            "eventSelector": "421ea47ef6e721c8687eff283e3cae83ec79fb379ac7e5be4285c4f4c68c3e54",
+            "id": 7835,
+            "name": "SwapOfferAdded",
+            "nameLocation": "1159:14:31",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 7834,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7833,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "offer",
+                  "nameLocation": "1184:5:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7835,
+                  "src": "1174:15:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_SwapOffer_$7809_memory_ptr",
+                    "typeString": "struct ISwapData.SwapOffer"
+                  },
+                  "typeName": {
+                    "id": 7832,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 7831,
+                      "name": "SwapOffer",
+                      "nameLocations": [
+                        "1174:9:31"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7809,
+                      "src": "1174:9:31"
+                    },
+                    "referencedDeclaration": 7809,
+                    "src": "1174:9:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_SwapOffer_$7809_storage_ptr",
+                      "typeString": "struct ISwapData.SwapOffer"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1173:17:31"
+            },
+            "src": "1153:38:31"
+          },
+          {
+            "anonymous": false,
+            "eventSelector": "73bf10f431953401ad4adc876e49289879495ffba6b1e6fcab8499ed4fb1ef57",
+            "id": 7840,
+            "name": "SwapOfferUpdated",
+            "nameLocation": "1202:16:31",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 7839,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7838,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "offer",
+                  "nameLocation": "1229:5:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7840,
+                  "src": "1219:15:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_SwapOffer_$7809_memory_ptr",
+                    "typeString": "struct ISwapData.SwapOffer"
+                  },
+                  "typeName": {
+                    "id": 7837,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 7836,
+                      "name": "SwapOffer",
+                      "nameLocations": [
+                        "1219:9:31"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7809,
+                      "src": "1219:9:31"
+                    },
+                    "referencedDeclaration": 7809,
+                    "src": "1219:9:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_SwapOffer_$7809_storage_ptr",
+                      "typeString": "struct ISwapData.SwapOffer"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1218:17:31"
+            },
+            "src": "1196:40:31"
+          },
+          {
+            "anonymous": false,
+            "eventSelector": "9658b6b21254e18b2df762ac28da18a17c7d65232a3985638e301b3ee8b1467e",
+            "id": 7844,
+            "name": "SwapOfferRemoved",
+            "nameLocation": "1247:16:31",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 7843,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7842,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "1272:2:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7844,
+                  "src": "1264:10:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7841,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1264:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1263:12:31"
+            },
+            "src": "1241:35:31"
+          },
+          {
+            "anonymous": false,
+            "eventSelector": "3e548515aa4f5661aa8f01438dcebdc27111ecdeedb4e19d9b1974fa7049149b",
+            "id": 7849,
+            "name": "TradeAdded",
+            "nameLocation": "1287:10:31",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 7848,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7847,
+                  "indexed": false,
+                  "mutability": "mutable",
+                  "name": "trade",
+                  "nameLocation": "1304:5:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7849,
+                  "src": "1298:11:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Trade_$7816_memory_ptr",
+                    "typeString": "struct ISwapData.Trade"
+                  },
+                  "typeName": {
+                    "id": 7846,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 7845,
+                      "name": "Trade",
+                      "nameLocations": [
+                        "1298:5:31"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7816,
+                      "src": "1298:5:31"
+                    },
+                    "referencedDeclaration": 7816,
+                    "src": "1298:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Trade_$7816_storage_ptr",
+                      "typeString": "struct ISwapData.Trade"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1297:13:31"
+            },
+            "src": "1281:30:31"
+          },
+          {
+            "functionSelector": "366505c1",
+            "id": 7857,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addListing",
+            "nameLocation": "1326:10:31",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7853,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7852,
+                  "mutability": "mutable",
+                  "name": "listing",
+                  "nameLocation": "1356:7:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7857,
+                  "src": "1337:26:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_SwapListing_$7780_memory_ptr",
+                    "typeString": "struct ISwapData.SwapListing"
+                  },
+                  "typeName": {
+                    "id": 7851,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 7850,
+                      "name": "SwapListing",
+                      "nameLocations": [
+                        "1337:11:31"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7780,
+                      "src": "1337:11:31"
+                    },
+                    "referencedDeclaration": 7780,
+                    "src": "1337:11:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_SwapListing_$7780_storage_ptr",
+                      "typeString": "struct ISwapData.SwapListing"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1336:28:31"
+            },
+            "returnParameters": {
+              "id": 7856,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7855,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7857,
+                  "src": "1383:4:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 7854,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1383:4:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1382:6:31"
+            },
+            "scope": 7972,
+            "src": "1317:72:31",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "cf281535",
+            "id": 7862,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "removeListingById",
+            "nameLocation": "1404:17:31",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7860,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7859,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "1430:2:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7862,
+                  "src": "1422:10:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7858,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1422:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1421:12:31"
+            },
+            "returnParameters": {
+              "id": 7861,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1442:0:31"
+            },
+            "scope": 7972,
+            "src": "1395:48:31",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "636651bb",
+            "id": 7868,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateListing",
+            "nameLocation": "1458:13:31",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7866,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7865,
+                  "mutability": "mutable",
+                  "name": "listing",
+                  "nameLocation": "1491:7:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7868,
+                  "src": "1472:26:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_SwapListing_$7780_memory_ptr",
+                    "typeString": "struct ISwapData.SwapListing"
+                  },
+                  "typeName": {
+                    "id": 7864,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 7863,
+                      "name": "SwapListing",
+                      "nameLocations": [
+                        "1472:11:31"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7780,
+                      "src": "1472:11:31"
+                    },
+                    "referencedDeclaration": 7780,
+                    "src": "1472:11:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_SwapListing_$7780_storage_ptr",
+                      "typeString": "struct ISwapData.SwapListing"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1471:28:31"
+            },
+            "returnParameters": {
+              "id": 7867,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1508:0:31"
+            },
+            "scope": 7972,
+            "src": "1449:60:31",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "b81603ba",
+            "id": 7876,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "readListingById",
+            "nameLocation": "1524:15:31",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7871,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7870,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "1548:2:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7876,
+                  "src": "1540:10:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7869,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1540:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1539:12:31"
+            },
+            "returnParameters": {
+              "id": 7875,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7874,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7876,
+                  "src": "1599:18:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_SwapListing_$7780_memory_ptr",
+                    "typeString": "struct ISwapData.SwapListing"
+                  },
+                  "typeName": {
+                    "id": 7873,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 7872,
+                      "name": "SwapListing",
+                      "nameLocations": [
+                        "1599:11:31"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7780,
+                      "src": "1599:11:31"
+                    },
+                    "referencedDeclaration": 7780,
+                    "src": "1599:11:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_SwapListing_$7780_storage_ptr",
+                      "typeString": "struct ISwapData.SwapListing"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1598:20:31"
+            },
+            "scope": 7972,
+            "src": "1515:104:31",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "5541596b",
+            "id": 7884,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addOffer",
+            "nameLocation": "1634:8:31",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7880,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7879,
+                  "mutability": "mutable",
+                  "name": "offer",
+                  "nameLocation": "1660:5:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7884,
+                  "src": "1643:22:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_SwapOffer_$7809_memory_ptr",
+                    "typeString": "struct ISwapData.SwapOffer"
+                  },
+                  "typeName": {
+                    "id": 7878,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 7877,
+                      "name": "SwapOffer",
+                      "nameLocations": [
+                        "1643:9:31"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7809,
+                      "src": "1643:9:31"
+                    },
+                    "referencedDeclaration": 7809,
+                    "src": "1643:9:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_SwapOffer_$7809_storage_ptr",
+                      "typeString": "struct ISwapData.SwapOffer"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1642:24:31"
+            },
+            "returnParameters": {
+              "id": 7883,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7882,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7884,
+                  "src": "1685:4:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 7881,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1685:4:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1684:6:31"
+            },
+            "scope": 7972,
+            "src": "1625:66:31",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "c2c83f9a",
+            "id": 7889,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "removeOfferById",
+            "nameLocation": "1706:15:31",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7887,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7886,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "1730:2:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7889,
+                  "src": "1722:10:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7885,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1722:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1721:12:31"
+            },
+            "returnParameters": {
+              "id": 7888,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1742:0:31"
+            },
+            "scope": 7972,
+            "src": "1697:46:31",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "9167be62",
+            "id": 7895,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateOffer",
+            "nameLocation": "1758:11:31",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7893,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7892,
+                  "mutability": "mutable",
+                  "name": "offer",
+                  "nameLocation": "1787:5:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7895,
+                  "src": "1770:22:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_SwapOffer_$7809_memory_ptr",
+                    "typeString": "struct ISwapData.SwapOffer"
+                  },
+                  "typeName": {
+                    "id": 7891,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 7890,
+                      "name": "SwapOffer",
+                      "nameLocations": [
+                        "1770:9:31"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7809,
+                      "src": "1770:9:31"
+                    },
+                    "referencedDeclaration": 7809,
+                    "src": "1770:9:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_SwapOffer_$7809_storage_ptr",
+                      "typeString": "struct ISwapData.SwapOffer"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1769:24:31"
+            },
+            "returnParameters": {
+              "id": 7894,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1802:0:31"
+            },
+            "scope": 7972,
+            "src": "1749:54:31",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "d7aa10fc",
+            "id": 7903,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "readOfferById",
+            "nameLocation": "1818:13:31",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7898,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7897,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "1840:2:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7903,
+                  "src": "1832:10:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7896,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1832:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1831:12:31"
+            },
+            "returnParameters": {
+              "id": 7902,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7901,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7903,
+                  "src": "1867:16:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_SwapOffer_$7809_memory_ptr",
+                    "typeString": "struct ISwapData.SwapOffer"
+                  },
+                  "typeName": {
+                    "id": 7900,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 7899,
+                      "name": "SwapOffer",
+                      "nameLocations": [
+                        "1867:9:31"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7809,
+                      "src": "1867:9:31"
+                    },
+                    "referencedDeclaration": 7809,
+                    "src": "1867:9:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_SwapOffer_$7809_storage_ptr",
+                      "typeString": "struct ISwapData.SwapOffer"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1866:18:31"
+            },
+            "scope": 7972,
+            "src": "1809:76:31",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "cff7c90e",
+            "id": 7909,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addTrade",
+            "nameLocation": "1900:8:31",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7907,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7906,
+                  "mutability": "mutable",
+                  "name": "trade",
+                  "nameLocation": "1922:5:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7909,
+                  "src": "1909:18:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Trade_$7816_memory_ptr",
+                    "typeString": "struct ISwapData.Trade"
+                  },
+                  "typeName": {
+                    "id": 7905,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 7904,
+                      "name": "Trade",
+                      "nameLocations": [
+                        "1909:5:31"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7816,
+                      "src": "1909:5:31"
+                    },
+                    "referencedDeclaration": 7816,
+                    "src": "1909:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Trade_$7816_storage_ptr",
+                      "typeString": "struct ISwapData.Trade"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1908:20:31"
+            },
+            "returnParameters": {
+              "id": 7908,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1937:0:31"
+            },
+            "scope": 7972,
+            "src": "1891:47:31",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "f022e25c",
+            "id": 7917,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "readTradeById",
+            "nameLocation": "1953:13:31",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7912,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7911,
+                  "mutability": "mutable",
+                  "name": "id",
+                  "nameLocation": "1975:2:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7917,
+                  "src": "1967:10:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7910,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1967:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1966:12:31"
+            },
+            "returnParameters": {
+              "id": 7916,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7915,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7917,
+                  "src": "2002:12:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Trade_$7816_memory_ptr",
+                    "typeString": "struct ISwapData.Trade"
+                  },
+                  "typeName": {
+                    "id": 7914,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 7913,
+                      "name": "Trade",
+                      "nameLocations": [
+                        "2002:5:31"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 7816,
+                      "src": "2002:5:31"
+                    },
+                    "referencedDeclaration": 7816,
+                    "src": "2002:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Trade_$7816_storage_ptr",
+                      "typeString": "struct ISwapData.Trade"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2001:14:31"
+            },
+            "scope": 7972,
+            "src": "1944:72:31",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "bf34ebc8",
+            "id": 7924,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "readAllListings",
+            "nameLocation": "2031:15:31",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7918,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2046:2:31"
+            },
+            "returnParameters": {
+              "id": 7923,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7922,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7924,
+                  "src": "2072:20:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_SwapListing_$7780_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct ISwapData.SwapListing[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 7920,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 7919,
+                        "name": "SwapListing",
+                        "nameLocations": [
+                          "2072:11:31"
+                        ],
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 7780,
+                        "src": "2072:11:31"
+                      },
+                      "referencedDeclaration": 7780,
+                      "src": "2072:11:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_SwapListing_$7780_storage_ptr",
+                        "typeString": "struct ISwapData.SwapListing"
+                      }
+                    },
+                    "id": 7921,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2072:13:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_SwapListing_$7780_storage_$dyn_storage_ptr",
+                      "typeString": "struct ISwapData.SwapListing[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2071:22:31"
+            },
+            "scope": 7972,
+            "src": "2022:72:31",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "67722a22",
+            "id": 7931,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "readAllOffers",
+            "nameLocation": "2109:13:31",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7925,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2122:2:31"
+            },
+            "returnParameters": {
+              "id": 7930,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7929,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7931,
+                  "src": "2148:18:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_SwapOffer_$7809_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct ISwapData.SwapOffer[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 7927,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 7926,
+                        "name": "SwapOffer",
+                        "nameLocations": [
+                          "2148:9:31"
+                        ],
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 7809,
+                        "src": "2148:9:31"
+                      },
+                      "referencedDeclaration": 7809,
+                      "src": "2148:9:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_SwapOffer_$7809_storage_ptr",
+                        "typeString": "struct ISwapData.SwapOffer"
+                      }
+                    },
+                    "id": 7928,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2148:11:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_SwapOffer_$7809_storage_$dyn_storage_ptr",
+                      "typeString": "struct ISwapData.SwapOffer[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2147:20:31"
+            },
+            "scope": 7972,
+            "src": "2100:68:31",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "31ebe3f9",
+            "id": 7938,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "readAllTrades",
+            "nameLocation": "2183:13:31",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7932,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2196:2:31"
+            },
+            "returnParameters": {
+              "id": 7937,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7936,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7938,
+                  "src": "2222:14:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Trade_$7816_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct ISwapData.Trade[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 7934,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 7933,
+                        "name": "Trade",
+                        "nameLocations": [
+                          "2222:5:31"
+                        ],
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 7816,
+                        "src": "2222:5:31"
+                      },
+                      "referencedDeclaration": 7816,
+                      "src": "2222:5:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Trade_$7816_storage_ptr",
+                        "typeString": "struct ISwapData.Trade"
+                      }
+                    },
+                    "id": 7935,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2222:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Trade_$7816_storage_$dyn_storage_ptr",
+                      "typeString": "struct ISwapData.Trade[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2221:16:31"
+            },
+            "scope": 7972,
+            "src": "2174:64:31",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "eadece7d",
+            "id": 7949,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "readListingsByIndex",
+            "nameLocation": "2252:19:31",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7943,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7940,
+                  "mutability": "mutable",
+                  "name": "start",
+                  "nameLocation": "2289:5:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7949,
+                  "src": "2281:13:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7939,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2281:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7942,
+                  "mutability": "mutable",
+                  "name": "end",
+                  "nameLocation": "2312:3:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7949,
+                  "src": "2304:11:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7941,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2304:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2271:50:31"
+            },
+            "returnParameters": {
+              "id": 7948,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7947,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7949,
+                  "src": "2345:20:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_SwapListing_$7780_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct ISwapData.SwapListing[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 7945,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 7944,
+                        "name": "SwapListing",
+                        "nameLocations": [
+                          "2345:11:31"
+                        ],
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 7780,
+                        "src": "2345:11:31"
+                      },
+                      "referencedDeclaration": 7780,
+                      "src": "2345:11:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_SwapListing_$7780_storage_ptr",
+                        "typeString": "struct ISwapData.SwapListing"
+                      }
+                    },
+                    "id": 7946,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2345:13:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_SwapListing_$7780_storage_$dyn_storage_ptr",
+                      "typeString": "struct ISwapData.SwapListing[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2344:22:31"
+            },
+            "scope": 7972,
+            "src": "2243:124:31",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "06f91841",
+            "id": 7960,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "readOffersByIndex",
+            "nameLocation": "2382:17:31",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7954,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7951,
+                  "mutability": "mutable",
+                  "name": "start",
+                  "nameLocation": "2417:5:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7960,
+                  "src": "2409:13:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7950,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2409:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7953,
+                  "mutability": "mutable",
+                  "name": "end",
+                  "nameLocation": "2440:3:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7960,
+                  "src": "2432:11:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7952,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2432:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2399:50:31"
+            },
+            "returnParameters": {
+              "id": 7959,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7958,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7960,
+                  "src": "2473:18:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_SwapOffer_$7809_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct ISwapData.SwapOffer[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 7956,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 7955,
+                        "name": "SwapOffer",
+                        "nameLocations": [
+                          "2473:9:31"
+                        ],
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 7809,
+                        "src": "2473:9:31"
+                      },
+                      "referencedDeclaration": 7809,
+                      "src": "2473:9:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_SwapOffer_$7809_storage_ptr",
+                        "typeString": "struct ISwapData.SwapOffer"
+                      }
+                    },
+                    "id": 7957,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2473:11:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_SwapOffer_$7809_storage_$dyn_storage_ptr",
+                      "typeString": "struct ISwapData.SwapOffer[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2472:20:31"
+            },
+            "scope": 7972,
+            "src": "2373:120:31",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "53e86fee",
+            "id": 7971,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "readTradesByIndex",
+            "nameLocation": "2507:17:31",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7965,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7962,
+                  "mutability": "mutable",
+                  "name": "start",
+                  "nameLocation": "2542:5:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7971,
+                  "src": "2534:13:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7961,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2534:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7964,
+                  "mutability": "mutable",
+                  "name": "end",
+                  "nameLocation": "2565:3:31",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7971,
+                  "src": "2557:11:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7963,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2557:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2524:50:31"
+            },
+            "returnParameters": {
+              "id": 7970,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7969,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7971,
+                  "src": "2598:14:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_Trade_$7816_memory_ptr_$dyn_memory_ptr",
+                    "typeString": "struct ISwapData.Trade[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 7967,
+                      "nodeType": "UserDefinedTypeName",
+                      "pathNode": {
+                        "id": 7966,
+                        "name": "Trade",
+                        "nameLocations": [
+                          "2598:5:31"
+                        ],
+                        "nodeType": "IdentifierPath",
+                        "referencedDeclaration": 7816,
+                        "src": "2598:5:31"
+                      },
+                      "referencedDeclaration": 7816,
+                      "src": "2598:5:31",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Trade_$7816_storage_ptr",
+                        "typeString": "struct ISwapData.Trade"
+                      }
+                    },
+                    "id": 7968,
+                    "nodeType": "ArrayTypeName",
+                    "src": "2598:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_struct$_Trade_$7816_storage_$dyn_storage_ptr",
+                      "typeString": "struct ISwapData.Trade[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2597:16:31"
+            },
+            "scope": 7972,
+            "src": "2498:116:31",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 7973,
+        "src": "139:2477:31",
+        "usedErrors": []
+      }
+    ],
+    "src": "31:2586:31"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.17+commit.8df45f5f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2023-10-25T17:46:01.820Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
