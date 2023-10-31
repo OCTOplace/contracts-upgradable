@@ -11700,6 +11700,12 @@
     "version": "0.8.17+commit.8df45f5f.Emscripten.clang"
   },
   "networks": {
+    "361": {
+      "events": {},
+      "links": {},
+      "address": "0x39F6A5A17e75279253A645a996F4B04B085Bc00c",
+      "transactionHash": "0x6a24261b980967aa8fab20561fdaf3152cceec0166141b1da54f9a0e892253a5"
+    },
     "365": {
       "events": {},
       "links": {},
@@ -11708,7 +11714,7 @@
     }
   },
   "schemaVersion": "3.4.7",
-  "updatedAt": "2023-10-25T17:52:05.944Z",
+  "updatedAt": "2023-10-31T17:26:27.840Z",
   "networkType": "ethereum",
   "devdoc": {
     "author": "Omsify",

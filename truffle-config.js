@@ -44,7 +44,7 @@ module.exports = {
  
         return new HDWalletProvider({
           privateKeys: [deployerPrivateKey],
-          providerOrUrl: 'https://eth-rpc-api.thetatoken.org/rpc',
+          providerOrUrl: 'http://172.190.238.225:18888/rpc',
         });
       },
       network_id: 361,
