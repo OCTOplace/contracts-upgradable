@@ -7,14 +7,14 @@ const CollectionDiscussions = artifacts.require(
 module.exports = async function (deployer) {
   const discussions = await deployProxy(
     Discussions,
-    ["0xfc9291929b48139029ecdb6d044ecc4814a61bdb"],
+    ["0x9AA68D9652699654DA9589633023DeEB8A56f2b5"],
     { deployer, initializer: "init" }
   );
   console.log("Deployed Discussions", discussions.address);
 
   const collectionDiscussions = await deployProxy(
     CollectionDiscussions,
-    ["0xfc9291929b48139029ecdb6d044ecc4814a61bdb"],
+    ["0x9AA68D9652699654DA9589633023DeEB8A56f2b5"],
     { deployer, initializer: "init" }
   );
   console.log("Deployed Collection Discussions", collectionDiscussions.address);

@@ -26,7 +26,7 @@ contract NFTCommentsUpgradeable is Initializable, OwnableUpgradeable {
     uint256 public commentFee ;
 
     function init(address token) public initializer {
-        __Context_init();
+        __Ownable_init();
         erc20Token = IERC20Upgradeable(token);
         commentFee = 1 ether; //1 TFuel
     }

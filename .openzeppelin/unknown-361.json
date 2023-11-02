@@ -29,6 +29,16 @@
       "address": "0x3Ec75AE3cF2ADE0F606aD3ab31a0918573f87f49",
       "txHash": "0x0adb73d7d20f64e4e9863df9b3b109ac3769fa5b5b704f04769770381114713d",
       "kind": "transparent"
+    },
+    {
+      "address": "0xfEfB9d1f61433c7BF04E667CfAFCf7A8eEe3cD8B",
+      "txHash": "0xe0dd3abfd07d74214b9380ebbf66c366649223d961ed668b561593cd04a5cfe9",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x63C290716F5A80baB5F2cc4D09678bAC71D28801",
+      "txHash": "0x7b564a8b38a76536d3fba3fa0d504a84904867aa92a7a4be599148eb7fe31612",
+      "kind": "transparent"
     }
   ],
   "impls": {
@@ -799,6 +809,117 @@
           },
           "t_struct(Comment)3598_storage": {
             "label": "struct NFTCollectionCommentsUpgradeable.Comment",
+            "members": [
+              {
+                "label": "commenter",
+                "type": "t_address"
+              },
+              {
+                "label": "timestamp",
+                "type": "t_uint256"
+              },
+              {
+                "label": "contents",
+                "type": "t_string_storage"
+              }
+            ]
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_uint8": {
+            "label": "uint8"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        },
+        "namespaces": {}
+      }
+    },
+    "c2d224ac08bc8a505ced6a3a387b1b488aa6c545b5b7e76e988b0ab2477a9846": {
+      "address": "0x4E980F74bf07bf9481f00de2ce19FeC9c0aef274",
+      "txHash": "0xef7df9fd8dae76cd0d7e2eb3766a3fdaec4df68f3adc61cb4b0929e4153960e2",
+      "layout": {
+        "solcVersion": "0.8.17",
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_uint8",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:63",
+            "retypedFrom": "bool"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:68"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "contract": "NFTCommentsUpgradeable",
+            "label": "erc20Token",
+            "type": "t_contract(IERC20Upgradeable)890",
+            "src": "../project:/contracts/DiscussionsUpgradeable.sol:14"
+          },
+          {
+            "contract": "NFTCommentsUpgradeable",
+            "label": "commentFee",
+            "type": "t_uint256",
+            "src": "../project:/contracts/DiscussionsUpgradeable.sol:26"
+          },
+          {
+            "contract": "NFTCommentsUpgradeable",
+            "label": "NFTCommentsByIdAtNFTAddress",
+            "type": "t_mapping(t_address,t_mapping(t_uint256,t_array(t_struct(Comment)3868_storage)dyn_storage))",
+            "src": "../project:/contracts/DiscussionsUpgradeable.sol:35"
+          }
+        ],
+        "types": {
+          "t_contract(IERC20Upgradeable)890": {
+            "label": "contract IERC20Upgradeable"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_mapping(t_address,t_mapping(t_uint256,t_array(t_struct(Comment)3868_storage)dyn_storage))": {
+            "label": "mapping(address => mapping(uint256 => struct NFTCommentsUpgradeable.Comment[]))"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_mapping(t_uint256,t_array(t_struct(Comment)3868_storage)dyn_storage)": {
+            "label": "mapping(uint256 => struct NFTCommentsUpgradeable.Comment[])"
+          },
+          "t_array(t_struct(Comment)3868_storage)dyn_storage": {
+            "label": "struct NFTCommentsUpgradeable.Comment[]"
+          },
+          "t_struct(Comment)3868_storage": {
+            "label": "struct NFTCommentsUpgradeable.Comment",
             "members": [
               {
                 "label": "commenter",
