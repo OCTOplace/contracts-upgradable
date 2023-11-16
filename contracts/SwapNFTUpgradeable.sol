@@ -176,7 +176,7 @@ contract SwapNFTUpgradeable is Initializable, ContextUpgradeable, AccessControlU
             address(this)
         );
         bool isListingTokenApproved = listingContract.isApprovedForAll(
-            offer.offerTokenOwner,
+            listing.tokenOwner,
             address(this)
         );
         require(isOfferTokenApproved && isListingTokenApproved, "not approved");
