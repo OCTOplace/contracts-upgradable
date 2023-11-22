@@ -49,6 +49,21 @@ module.exports = {
       },
       network_id: 361,
       gasPrice: 4000000000000,
+    },
+    eth: {
+      provider: () => {
+ 
+        // Replace the private key below with the private key of the deployer wallet. 
+        // Make sure the deployer wallet has a sufficient amount of TFuel, e.g. 100 TFuel
+        var deployerPrivateKey = process.env.ETH_KEY;
+ 
+        return new HDWalletProvider({
+          privateKeys: [deployerPrivateKey],
+          providerOrUrl: 'https://goerli.infura.io/v3/df332722ac3f48d0acbcb557938aa5bc',
+        });
+      },
+      network_id: 5,
+      gasPrice: 4000000000000,
     }
   },
 
