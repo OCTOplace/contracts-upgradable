@@ -10,7 +10,6 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
  * @author Omsify
  */
 contract NFTCommentsUpgradeable is Initializable, OwnableUpgradeable {
-
     IERC20Upgradeable public erc20Token;
     struct Comment {
         address commenter;
@@ -23,7 +22,15 @@ contract NFTCommentsUpgradeable is Initializable, OwnableUpgradeable {
     error LowBalance();
     error SpendingNotApproved();
 
-    uint256 public commentFee ;
+    uint256 public commentFee;
+
+    event NFTCommentPosted(
+        address indexed collectionAddress,
+        uint256 indexed tokenId,
+        address indexed senderAddress,
+        uint256 timestamp,
+        string comment
+    );
 
     function init(address token) public initializer {
         __Ownable_init();
@@ -32,42 +39,62 @@ contract NFTCommentsUpgradeable is Initializable, OwnableUpgradeable {
     }
 
     // Mapping from NFT collection address => mapping from tokenId => comments related to this specific token.
-    mapping(address => mapping(uint256 => Comment[])) private NFTCommentsByIdAtNFTAddress;
+    mapping(address => mapping(uint256 => Comment[]))
+        private NFTCommentsByIdAtNFTAddress;
 
     /**
      * @dev Stores a comment with text `contents` related to
      * NFT with address `nftAddress` and token id `tokenId` in the contract.
      * Transaction value should equal current commentFee.
      */
-    function addComment_native(address nftAddress, uint256 tokenId, string calldata contents) public payable  {
-        if(msg.value != commentFee) revert WrongValue();
+    function addComment_native(
+        address nftAddress,
+        uint256 tokenId,
+        string calldata contents
+    ) public payable {
+        if (msg.value != commentFee) revert WrongValue();
 
-        NFTCommentsByIdAtNFTAddress[nftAddress][tokenId].push(Comment(
+        NFTCommentsByIdAtNFTAddress[nftAddress][tokenId].push(
+            Comment(msg.sender, block.timestamp, contents)
+        );
+        emit NFTCommentPosted(
+            nftAddress,
+            tokenId,
             msg.sender,
             block.timestamp,
             contents
-        ));
+        );
     }
-    
-    function addComment_erc20(address nftAddress, uint256 tokenId, string calldata contents) public  {
-        if(erc20Token.balanceOf(msg.sender) < commentFee) revert LowBalance();
-        if(erc20Token.allowance(msg.sender, address(this)) < commentFee) revert SpendingNotApproved();
 
-        NFTCommentsByIdAtNFTAddress[nftAddress][tokenId].push(Comment(
+    function addComment_erc20(
+        address nftAddress,
+        uint256 tokenId,
+        string calldata contents
+    ) public {
+        if (erc20Token.balanceOf(msg.sender) < commentFee) revert LowBalance();
+        if (erc20Token.allowance(msg.sender, address(this)) < commentFee)
+            revert SpendingNotApproved();
+
+        NFTCommentsByIdAtNFTAddress[nftAddress][tokenId].push(
+            Comment(msg.sender, block.timestamp, contents)
+        );
+        emit NFTCommentPosted(
+            nftAddress,
+            tokenId,
             msg.sender,
             block.timestamp,
             contents
-        ));
+        );
 
-        erc20Token.transferFrom(msg.sender , address(this), commentFee);
+        erc20Token.transferFrom(msg.sender, address(this), commentFee);
     }
 
     /**
      * @dev Withdraws fee to the contract owner address.
      */
     function withdrawFees() public onlyOwner {
-        (bool sent,) = msg.sender.call{value: address(this).balance}("");
-        if(!sent) revert WithdrawError();
+        (bool sent, ) = msg.sender.call{value: address(this).balance}("");
+        if (!sent) revert WithdrawError();
     }
 
     /**
@@ -95,8 +122,18 @@ contract NFTCommentsUpgradeable is Initializable, OwnableUpgradeable {
      * @dev Returns a comment related to
      * NFT with address `nftAddress` and token id `tokenId` at `index` from the contract.
      */
-    function getComment(address nftAddress, uint256 tokenId, uint256 index) external view returns(address commenter, uint256 timestamp, string memory contents) {
-        Comment storage comment = NFTCommentsByIdAtNFTAddress[nftAddress][tokenId][index];
+    function getComment(
+        address nftAddress,
+        uint256 tokenId,
+        uint256 index
+    )
+        external
+        view
+        returns (address commenter, uint256 timestamp, string memory contents)
+    {
+        Comment storage comment = NFTCommentsByIdAtNFTAddress[nftAddress][
+            tokenId
+        ][index];
         return (comment.commenter, comment.timestamp, comment.contents);
     }
 
@@ -104,7 +141,10 @@ contract NFTCommentsUpgradeable is Initializable, OwnableUpgradeable {
      * @dev Returns a comment array related to
      * NFT with address `nftAddress` and token id `tokenId` from the contract.
      */
-    function getAllCommentsOf(address nftAddress, uint256 tokenId) external view returns (Comment[] memory) {
+    function getAllCommentsOf(
+        address nftAddress,
+        uint256 tokenId
+    ) external view returns (Comment[] memory) {
         return NFTCommentsByIdAtNFTAddress[nftAddress][tokenId];
     }
 }

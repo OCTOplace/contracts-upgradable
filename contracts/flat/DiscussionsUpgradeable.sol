@@ -62,10 +62,16 @@ library AddressUpgradeable {
      * https://solidity.readthedocs.io/en/v0.8.0/security-considerations.html#use-the-checks-effects-interactions-pattern[checks-effects-interactions pattern].
      */
     function sendValue(address payable recipient, uint256 amount) internal {
-        require(address(this).balance >= amount, "Address: insufficient balance");
+        require(
+            address(this).balance >= amount,
+            "Address: insufficient balance"
+        );
 
         (bool success, ) = recipient.call{value: amount}("");
-        require(success, "Address: unable to send value, recipient may have reverted");
+        require(
+            success,
+            "Address: unable to send value, recipient may have reverted"
+        );
     }
 
     /**
@@ -86,8 +92,17 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCall(address target, bytes memory data) internal returns (bytes memory) {
-        return functionCallWithValue(target, data, 0, "Address: low-level call failed");
+    function functionCall(
+        address target,
+        bytes memory data
+    ) internal returns (bytes memory) {
+        return
+            functionCallWithValue(
+                target,
+                data,
+                0,
+                "Address: low-level call failed"
+            );
     }
 
     /**
@@ -115,8 +130,18 @@ library AddressUpgradeable {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {
-        return functionCallWithValue(target, data, value, "Address: low-level call with value failed");
+    function functionCallWithValue(
+        address target,
+        bytes memory data,
+        uint256 value
+    ) internal returns (bytes memory) {
+        return
+            functionCallWithValue(
+                target,
+                data,
+                value,
+                "Address: low-level call with value failed"
+            );
     }
 
     /**
@@ -131,9 +156,20 @@ library AddressUpgradeable {
         uint256 value,
         string memory errorMessage
     ) internal returns (bytes memory) {
-        require(address(this).balance >= value, "Address: insufficient balance for call");
-        (bool success, bytes memory returndata) = target.call{value: value}(data);
-        return verifyCallResultFromTarget(target, success, returndata, errorMessage);
+        require(
+            address(this).balance >= value,
+            "Address: insufficient balance for call"
+        );
+        (bool success, bytes memory returndata) = target.call{value: value}(
+            data
+        );
+        return
+            verifyCallResultFromTarget(
+                target,
+                success,
+                returndata,
+                errorMessage
+            );
     }
 
     /**
@@ -142,8 +178,16 @@ library AddressUpgradeable {
      *
      * _Available since v3.3._
      */
-    function functionStaticCall(address target, bytes memory data) internal view returns (bytes memory) {
-        return functionStaticCall(target, data, "Address: low-level static call failed");
+    function functionStaticCall(
+        address target,
+        bytes memory data
+    ) internal view returns (bytes memory) {
+        return
+            functionStaticCall(
+                target,
+                data,
+                "Address: low-level static call failed"
+            );
     }
 
     /**
@@ -158,7 +202,13 @@ library AddressUpgradeable {
         string memory errorMessage
     ) internal view returns (bytes memory) {
         (bool success, bytes memory returndata) = target.staticcall(data);
-        return verifyCallResultFromTarget(target, success, returndata, errorMessage);
+        return
+            verifyCallResultFromTarget(
+                target,
+                success,
+                returndata,
+                errorMessage
+            );
     }
 
     /**
@@ -167,8 +217,16 @@ library AddressUpgradeable {
      *
      * _Available since v3.4._
      */
-    function functionDelegateCall(address target, bytes memory data) internal returns (bytes memory) {
-        return functionDelegateCall(target, data, "Address: low-level delegate call failed");
+    function functionDelegateCall(
+        address target,
+        bytes memory data
+    ) internal returns (bytes memory) {
+        return
+            functionDelegateCall(
+                target,
+                data,
+                "Address: low-level delegate call failed"
+            );
     }
 
     /**
@@ -183,7 +241,13 @@ library AddressUpgradeable {
         string memory errorMessage
     ) internal returns (bytes memory) {
         (bool success, bytes memory returndata) = target.delegatecall(data);
-        return verifyCallResultFromTarget(target, success, returndata, errorMessage);
+        return
+            verifyCallResultFromTarget(
+                target,
+                success,
+                returndata,
+                errorMessage
+            );
     }
 
     /**
@@ -228,7 +292,10 @@ library AddressUpgradeable {
         }
     }
 
-    function _revert(bytes memory returndata, string memory errorMessage) private pure {
+    function _revert(
+        bytes memory returndata,
+        string memory errorMessage
+    ) private pure {
         // Look for revert reason and bubble it up if present
         if (returndata.length > 0) {
             // The easiest way to bubble the revert reason is using memory via assembly
@@ -242,7 +309,6 @@ library AddressUpgradeable {
         }
     }
 }
-
 
 /**
  * @dev This is a base contract to aid in writing upgradeable contracts, or any kind of contract that will be deployed
@@ -323,7 +389,9 @@ abstract contract Initializable {
     modifier initializer() {
         bool isTopLevelCall = !_initializing;
         require(
-            (isTopLevelCall && _initialized < 1) || (!AddressUpgradeable.isContract(address(this)) && _initialized == 1),
+            (isTopLevelCall && _initialized < 1) ||
+                (!AddressUpgradeable.isContract(address(this)) &&
+                    _initialized == 1),
             "Initializable: contract is already initialized"
         );
         _initialized = 1;
@@ -356,7 +424,10 @@ abstract contract Initializable {
      * Emits an {Initialized} event.
      */
     modifier reinitializer(uint8 version) {
-        require(!_initializing && _initialized < version, "Initializable: contract is already initialized");
+        require(
+            !_initializing && _initialized < version,
+            "Initializable: contract is already initialized"
+        );
         _initialized = version;
         _initializing = true;
         _;
@@ -404,7 +475,6 @@ abstract contract Initializable {
     }
 }
 
-
 /**
  * @dev Provides information about the current execution context, including the
  * sender of the transaction and its data. While these are generally available
@@ -416,11 +486,10 @@ abstract contract Initializable {
  * This contract is only required for intermediate, library-like contracts.
  */
 abstract contract ContextUpgradeable is Initializable {
-    function __Context_init() internal onlyInitializing {
-    }
+    function __Context_init() internal onlyInitializing {}
 
-    function __Context_init_unchained() internal onlyInitializing {
-    }
+    function __Context_init_unchained() internal onlyInitializing {}
+
     function _msgSender() internal view virtual returns (address) {
         return msg.sender;
     }
@@ -437,8 +506,6 @@ abstract contract ContextUpgradeable is Initializable {
     uint256[50] private __gap;
 }
 
-
-
 /**
  * @dev Contract module which provides a basic access control mechanism, where
  * there is an account (an owner) that can be granted exclusive access to
@@ -454,7 +521,10 @@ abstract contract ContextUpgradeable is Initializable {
 abstract contract OwnableUpgradeable is Initializable, ContextUpgradeable {
     address private _owner;
 
-    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+    event OwnershipTransferred(
+        address indexed previousOwner,
+        address indexed newOwner
+    );
 
     /**
      * @dev Initializes the contract setting the deployer as the initial owner.
@@ -505,7 +575,10 @@ abstract contract OwnableUpgradeable is Initializable, ContextUpgradeable {
      * Can only be called by the current owner.
      */
     function transferOwnership(address newOwner) public virtual onlyOwner {
-        require(newOwner != address(0), "Ownable: new owner is the zero address");
+        require(
+            newOwner != address(0),
+            "Ownable: new owner is the zero address"
+        );
         _transferOwnership(newOwner);
     }
 
@@ -527,7 +600,6 @@ abstract contract OwnableUpgradeable is Initializable, ContextUpgradeable {
     uint256[49] private __gap;
 }
 
-
 /**
  * @dev Interface of the ERC20 standard as defined in the EIP.
  */
@@ -544,7 +616,11 @@ interface IERC20Upgradeable {
      * @dev Emitted when the allowance of a `spender` for an `owner` is set by
      * a call to {approve}. `value` is the new allowance.
      */
-    event Approval(address indexed owner, address indexed spender, uint256 value);
+    event Approval(
+        address indexed owner,
+        address indexed spender,
+        uint256 value
+    );
 
     /**
      * @dev Returns the amount of tokens in existence.
@@ -572,7 +648,10 @@ interface IERC20Upgradeable {
      *
      * This value changes when {approve} or {transferFrom} are called.
      */
-    function allowance(address owner, address spender) external view returns (uint256);
+    function allowance(
+        address owner,
+        address spender
+    ) external view returns (uint256);
 
     /**
      * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.
@@ -599,18 +678,18 @@ interface IERC20Upgradeable {
      *
      * Emits a {Transfer} event.
      */
-    function transferFrom(address from, address to, uint256 amount) external returns (bool);
+    function transferFrom(
+        address from,
+        address to,
+        uint256 amount
+    ) external returns (bool);
 }
-
-
-
 
 /**
  * @dev Simple on-chain storage for NFT commenting.
  * @author Omsify
  */
-contract NFTCommentsUpgradeable is Initializable, OwnableUpgradeable {
-
+contract NFTCommentsUpgradeableFLAT is Initializable, OwnableUpgradeable {
     IERC20Upgradeable public erc20Token;
     struct Comment {
         address commenter;
@@ -623,7 +702,15 @@ contract NFTCommentsUpgradeable is Initializable, OwnableUpgradeable {
     error LowBalance();
     error SpendingNotApproved();
 
-    uint256 public commentFee ;
+    uint256 public commentFee;
+
+    event NFTCommentPosted(
+        address indexed collectionAddress,
+        uint256 indexed tokenId,
+        address indexed senderAddress,
+        uint256 timestamp,
+        string comment
+    );
 
     function init(address token) public initializer {
         __Ownable_init();
@@ -632,42 +719,61 @@ contract NFTCommentsUpgradeable is Initializable, OwnableUpgradeable {
     }
 
     // Mapping from NFT collection address => mapping from tokenId => comments related to this specific token.
-    mapping(address => mapping(uint256 => Comment[])) private NFTCommentsByIdAtNFTAddress;
+    mapping(address => mapping(uint256 => Comment[]))
+        private NFTCommentsByIdAtNFTAddress;
 
     /**
      * @dev Stores a comment with text `contents` related to
      * NFT with address `nftAddress` and token id `tokenId` in the contract.
      * Transaction value should equal current commentFee.
      */
-    function addComment_native(address nftAddress, uint256 tokenId, string calldata contents) public payable  {
-        if(msg.value != commentFee) revert WrongValue();
+    function addComment_native(
+        address nftAddress,
+        uint256 tokenId,
+        string calldata contents
+    ) public payable {
+        if (msg.value != commentFee) revert WrongValue();
 
-        NFTCommentsByIdAtNFTAddress[nftAddress][tokenId].push(Comment(
+        NFTCommentsByIdAtNFTAddress[nftAddress][tokenId].push(
+            Comment(msg.sender, block.timestamp, contents)
+        );
+        emit NFTCommentPosted(
+            nftAddress,
+            tokenId,
             msg.sender,
             block.timestamp,
             contents
-        ));
+        );
     }
-    
-    function addComment_erc20(address nftAddress, uint256 tokenId, string calldata contents) public  {
-        if(erc20Token.balanceOf(msg.sender) < commentFee) revert LowBalance();
-        if(erc20Token.allowance(msg.sender, address(this)) < commentFee) revert SpendingNotApproved();
 
-        NFTCommentsByIdAtNFTAddress[nftAddress][tokenId].push(Comment(
+    function addComment_erc20(
+        address nftAddress,
+        uint256 tokenId,
+        string calldata contents
+    ) public {
+        if (erc20Token.balanceOf(msg.sender) < commentFee) revert LowBalance();
+        if (erc20Token.allowance(msg.sender, address(this)) < commentFee)
+            revert SpendingNotApproved();
+
+        NFTCommentsByIdAtNFTAddress[nftAddress][tokenId].push(
+            Comment(msg.sender, block.timestamp, contents)
+        );
+        emit NFTCommentPosted(
+            nftAddress,
+            tokenId,
             msg.sender,
             block.timestamp,
             contents
-        ));
-
-        erc20Token.transferFrom(msg.sender , address(this), commentFee);
+        );
+        erc20Token.transferFrom(msg.sender, address(this), commentFee);
     }
 
     /**
      * @dev Withdraws fee to the contract owner address.
      */
     function withdrawFees() public onlyOwner {
-        (bool sent,) = msg.sender.call{value: address(this).balance}("");
-        if(!sent) revert WithdrawError();
+        (bool sent, ) = msg.sender.call{value: address(this).balance}("");
+        if (!sent) revert WithdrawError();
     }
 
     /**
@@ -695,8 +801,18 @@ contract NFTCommentsUpgradeable is Initializable, OwnableUpgradeable {
      * @dev Returns a comment related to
      * NFT with address `nftAddress` and token id `tokenId` at `index` from the contract.
      */
-    function getComment(address nftAddress, uint256 tokenId, uint256 index) external view returns(address commenter, uint256 timestamp, string memory contents) {
-        Comment storage comment = NFTCommentsByIdAtNFTAddress[nftAddress][tokenId][index];
+    function getComment(
+        address nftAddress,
+        uint256 tokenId,
+        uint256 index
+    )
+        external
+        view
+        returns (address commenter, uint256 timestamp, string memory contents)
+    {
+        Comment storage comment = NFTCommentsByIdAtNFTAddress[nftAddress][
+            tokenId
+        ][index];
         return (comment.commenter, comment.timestamp, comment.contents);
     }
 
@@ -704,7 +820,10 @@ contract NFTCommentsUpgradeable is Initializable, OwnableUpgradeable {
      * @dev Returns a comment array related to
      * NFT with address `nftAddress` and token id `tokenId` from the contract.
      */
-    function getAllCommentsOf(address nftAddress, uint256 tokenId) external view returns (Comment[] memory) {
+    function getAllCommentsOf(
+        address nftAddress,
+        uint256 tokenId
+    ) external view returns (Comment[] memory) {
         return NFTCommentsByIdAtNFTAddress[nftAddress][tokenId];
     }
 }
