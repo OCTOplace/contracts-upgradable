@@ -6,12 +6,16 @@ import "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
-contract SwapNFTUpgradeable is Initializable, ContextUpgradeable, AccessControlUpgradeable {
+contract SwapNFTUpgradeable is
+    Initializable,
+    ContextUpgradeable,
+    AccessControlUpgradeable
+{
     IERC20Upgradeable private _feeToken;
     ISwapData private dataContract;
 
-    uint256 private totalBips ;
-    uint256 public txCharge ;
+    uint256 private totalBips;
+    uint256 public txCharge;
 
     event SwapListingCreated(
         address collectionAddress,
@@ -57,13 +61,10 @@ contract SwapNFTUpgradeable is Initializable, ContextUpgradeable, AccessControlU
         address nftContract_
     ) external payable {
         IERC721Upgradeable nftContract = IERC721Upgradeable(nftContract_);
-        bool isApproved = nftContract.isApprovedForAll(
-            _msgSender(),
-            address(this)
-        );
+        address operator = nftContract.getApproved(tokenId_);
         require(msg.value == txCharge, "Insufficient tfuel sent for txCharge");
         require(
-            isApproved,
+            operator == address(this),
             "Approval is required for Swap Contract before listing."
         );
         require(
@@ -90,12 +91,9 @@ contract SwapNFTUpgradeable is Initializable, ContextUpgradeable, AccessControlU
         uint256 listingId_
     ) external {
         IERC721Upgradeable nftContract = IERC721Upgradeable(nftContract_);
-        bool isApproved = nftContract.isApprovedForAll(
-            _msgSender(),
-            address(this)
-        );
+        address operator = nftContract.getApproved(tokenId_);
         require(
-            isApproved,
+            operator == address(this),
             "Approval is required for Swap Contract before listing."
         );
         require(
@@ -105,7 +103,9 @@ contract SwapNFTUpgradeable is Initializable, ContextUpgradeable, AccessControlU
         ISwapData.SwapListing memory listing = dataContract.readListingById(
             listingId_
         );
-        IERC721Upgradeable listingNftContract = IERC721Upgradeable(listing.tokenAddress);
+        IERC721Upgradeable listingNftContract = IERC721Upgradeable(
+            listing.tokenAddress
+        );
         require(
             listingNftContract.ownerOf(listing.tokenId) == listing.tokenOwner,
             "Listing Expired"
@@ -156,10 +156,16 @@ contract SwapNFTUpgradeable is Initializable, ContextUpgradeable, AccessControlU
         ISwapData.SwapListing memory listing = dataContract.readListingById(
             listingId_
         );
-        IERC721Upgradeable offerContract = IERC721Upgradeable(offer.offerTokenAddress);
-        IERC721Upgradeable listingContract = IERC721Upgradeable(offer.listingTokenAddress);
+        IERC721Upgradeable offerContract = IERC721Upgradeable(
+            offer.offerTokenAddress
+        );
+        IERC721Upgradeable listingContract = IERC721Upgradeable(
+            offer.listingTokenAddress
+        );
         require(offer.listingTokenId == listing.tokenId, "Incorrect listing");
-        IERC721Upgradeable listingNftContract = IERC721Upgradeable(listing.tokenAddress);
+        IERC721Upgradeable listingNftContract = IERC721Upgradeable(
+            listing.tokenAddress
+        );
         require(
             listingNftContract.ownerOf(listing.tokenId) == _msgSender(),
             "You are not the owner of this listing"
@@ -171,15 +177,17 @@ contract SwapNFTUpgradeable is Initializable, ContextUpgradeable, AccessControlU
         require(!listing.isCompleted && !offer.isCompleted, "Invalid request.");
         require(!listing.isCancelled && !offer.isCancelled, "Invalid Request.");
         require(!offer.isDeclined, "Invalid Request");
-        bool isOfferTokenApproved = offerContract.isApprovedForAll(
-            offer.offerTokenOwner,
-            address(this)
+        address offerTokenOperator = offerContract.getApproved(
+            offer.offerTokenId
         );
-        bool isListingTokenApproved = listingContract.isApprovedForAll(
-            listing.tokenOwner,
-            address(this)
+        address listingTokenOperator = listingContract.getApproved(
+            offer.listingTokenId
         );
-        require(isOfferTokenApproved && isListingTokenApproved, "not approved");
+        require(
+            offerTokenOperator == address(this) &&
+                listingTokenOperator == address(this),
+            "not approved"
+        );
 
         offerContract.transferFrom(
             offer.offerTokenOwner,
@@ -211,7 +219,10 @@ contract SwapNFTUpgradeable is Initializable, ContextUpgradeable, AccessControlU
         return dataContract.readAllListings();
     }
 
-    function readListingsByIndex(uint256 start, uint256 end) external view returns (ISwapData.SwapListing[] memory){
+    function readListingsByIndex(
+        uint256 start,
+        uint256 end
+    ) external view returns (ISwapData.SwapListing[] memory) {
         return dataContract.readListingsByIndex(start, end);
     }
 
@@ -256,7 +267,10 @@ contract SwapNFTUpgradeable is Initializable, ContextUpgradeable, AccessControlU
         emit SwapOfferWithdraw(_msgSender(), id);
     }
 
-    function readOffersByIndex(uint256 start, uint256 end) external view returns (ISwapData.SwapOffer[] memory){
+    function readOffersByIndex(
+        uint256 start,
+        uint256 end
+    ) external view returns (ISwapData.SwapOffer[] memory) {
         return dataContract.readOffersByIndex(start, end);
     }
 
@@ -264,7 +278,10 @@ contract SwapNFTUpgradeable is Initializable, ContextUpgradeable, AccessControlU
         return dataContract.readAllTrades();
     }
 
-    function readTradesByIndex(uint256 start, uint256 end) external view returns (ISwapData.Trade[] memory){
+    function readTradesByIndex(
+        uint256 start,
+        uint256 end
+    ) external view returns (ISwapData.Trade[] memory) {
         return dataContract.readTradesByIndex(start, end);
     }
 
